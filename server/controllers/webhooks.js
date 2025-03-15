@@ -12,7 +12,10 @@ export const cleekWebhooks = async (req, res) => {
         "svix-signature": req.headers["svix-signature"]
       }
     );
+
     const { data, type } = req.body;
+
+    console.log("Webhook received:", type, data); // Debugging log
 
     switch (type) {
       case "user.created":
@@ -23,7 +26,7 @@ export const cleekWebhooks = async (req, res) => {
           imageUrl: data.image_url,
         };
         await User.create(userData);
-        res.json({});
+        res.json({ success: true });
         break;
 
       case "user.updated":
@@ -33,12 +36,12 @@ export const cleekWebhooks = async (req, res) => {
           imageUrl: data.image_url,
         };
         await User.findByIdAndUpdate(data.id, updatedUserData);
-        res.json({});
+        res.json({ success: true });
         break;
 
       case "user.deleted":
         await User.findByIdAndDelete(data.id);
-        res.json({});
+        res.json({ success: true });
         break;
 
       default:
@@ -46,6 +49,7 @@ export const cleekWebhooks = async (req, res) => {
         break;
     }
   } catch (error) {
+    console.error("Error handling webhook:", error); // Debugging log
     res.status(500).json({ success: false, message: error.message });
   }
 };
