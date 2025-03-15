@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: 'Outfit', sans-serif;
+}
+@layer base{
+  html {
+    scroll-behavior: smooth;
+  }
+}
+ ::-webkit-scrollbar{
+  display: none;
+}
+
+
+/* Rich Text Container */
+.rich-text {
+  @apply text-gray-800 leading-relaxed;
+}
+
+/* Headings */
+.rich-text h1 {
+  @apply text-3xl font-bold mt-6 mb-4;
+}
+
+.rich-text h2 {
+  @apply text-2xl font-semibold mt-5 mb-3;
+}
+
+.rich-text h3 {
+  @apply text-xl font-medium mt-4 mb-2;
+}
+
+/* Paragraphs */
+.rich-text p {
+  @apply text-base mb-4;
+}
+
+/* Links */
+.rich-text a {
+  @apply text-blue-500 underline hover:text-blue-600;
+}
+
+/* Blockquotes */
+.rich-text blockquote {
+  @apply border-l-4 border-gray-400 pl-4 italic text-gray-600 my-4;
+}
+
+/* Lists */
+.rich-text ul {
+  @apply list-disc list-inside my-4;
+}
+
+.rich-text ol {
+  @apply list-decimal list-inside my-4;
+}
+
+.rich-text li {
+  @apply mb-2;
+}
+
+/* Code Blocks */
+.rich-text pre {
+  @apply bg-gray-100 p-4 rounded-md text-sm overflow-x-auto;
+}
+
+.rich-text code {
+  @apply bg-gray-200 px-1 py-0.5 rounded text-sm;
+}
+
+/* Images */
+.rich-text img {
+  @apply max-w-full rounded-md my-4 shadow;
+}
+
+/* Tables */
+.rich-text table {
+  @apply w-full border-collapse my-4;
+}
+
+.rich-text th, .rich-text td {
+  @apply border border-gray-300 px-3 py-2;
+}
+
+.rich-text th {
+  @apply bg-gray-200 font-semibold;
+}
+
